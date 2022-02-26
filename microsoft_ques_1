@@ -1,0 +1,39 @@
+//program to find missing number 
+//Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. Find the missing element.
+//Example 1:
+//Input:
+//N = 5
+//A[] = {1,2,3,5}
+//Output: 4
+
+
+// Approach is to sort the array first and find the diff between two consecutive numbers.if that is not 1, then the element is missing.
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+int arr[]={1,7,2,4,3,8,9,5,0};  //unsorted array
+int i,j,temp;
+for(i=0;i<10;i++)
+{
+    for(j=i+1;j<=10;j++)
+    {
+        if(arr[i]>arr[j])
+        {
+        temp=arr[j];
+        arr[j]=arr[i];  //sorting an array using a temporary variable
+        arr[i]=temp;
+        }
+    }
+}
+for(i=0;i<9;i++)
+printf("%d",arr[i]);
+
+for (int i = 0; i < 9; i++) {
+        if (arr[i+1]-arr[i]!=1) {    //if the numbers are continous they must be consecutive. if not, then the missing number is printed.
+          printf("\nThe missing number is %d", i+1);
+          break;
+        }
+      }
+return 0;
+}
