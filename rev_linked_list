@@ -1,0 +1,56 @@
+//c program to reverse a linked list.
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node           //create a struct of type node 
+{
+    int data;
+    struct node *next;
+};
+
+void push(struct node **head_dup,int new_data)                 //function takes head_reference address and data in it
+{
+    struct node *new_node = (struct node *)malloc(sizeof(struct node));  //create a new node dynamically
+    new_node->data = new_data;  //store data in the data segment of node
+    new_node->next = (*head_dup); //inserting in front of head node such that the new node points the head node.
+    *head_dup = new_node;   //new_node becomes head.
+}
+void print(struct node *head_dup)
+{
+    struct node *temp = head_dup;
+    while(temp!=NULL)           //creating anode called temp and traversing till last node 
+    {
+        printf("%d",temp->data);
+        temp=temp->next;
+    }
+}
+void reverse(struct node **head_dup)
+{
+    struct node *prev=NULL;               //create 3 nodes. called prev, curr, next
+    struct node *curr =*head_dup;         //curr is duplicate of head_node
+    struct node *next=NULL;
+    while(curr != NULL) 
+    {
+    next = curr->next;     //in the newly created next node store the value of currrent node pointer
+    curr->next=prev;       //the previous becomes the 1st node and so on
+    prev=curr;
+    curr = next;
+    }
+    *head_dup = prev;           //HERE WE ARE NOT LITERALLY CHANGING THE BLOCKS OF NODES LIKE IN ARRAY REVERSAL> "WE ARE CHANGING THE POINTERS TO POINT IN REVERSE OREDER
+                                //AND MAKING THE LAST ONE AS HEAD" EX:1->2->3->4->NULL,.,.reverse would be NULL<-1<-2<-3<-4 AND WE MAKE 4 AS HEAD NODE. SO IT PRINTS IN REVE ORDER
+                                   
+}
+int main()
+{
+    struct node *head = NULL;
+    push(&head,5);
+    push(&head,6);
+    push(&head,7);
+    push(&head,8);
+    print(head);
+    printf("\n");
+    reverse(&head);
+    print(head);
+    return 0;
+}
