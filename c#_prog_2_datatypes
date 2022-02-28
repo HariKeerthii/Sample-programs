@@ -1,0 +1,16 @@
+using System;
+namespace sec_prog
+{
+    class dataTypes
+    {
+        static void Main()
+        {
+            string name = "Keerthi";
+            char gender = 'F';
+            int age = 28;
+            Console.WriteLine("The details are " + name + " gender is "+ gender +" age is "+ age);
+            
+            
+        }
+    }
+}
