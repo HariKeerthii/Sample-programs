@@ -1,0 +1,12 @@
+//First program in c#
+using System; //This means that we are using system library which provides useful functions like console and all
+namespace Hello //namespace indicates the scope
+{
+    class HelloWorld //a bluprint of the program, can be understood as skeleton of the program
+    {
+        static void Main() //this is where the execution starts
+        {
+          Console.WriteLine("My first c# Program"); //it is a inbuilt function 
+        }
+    }
+}
