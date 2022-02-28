@@ -1,0 +1,24 @@
+//String operations basics
+using System;
+namespace Strings_1
+{
+    class String_operations
+    {
+        static void Main()
+        {
+           string example = "Hello world";       //directly can declare string
+           Console.WriteLine(example.ToUpper()); //conversion to upper
+           Console.WriteLine(example.ToLower());//conversion to lower
+           Console.WriteLine(example.Contains("Hello")); //checking if substring
+           Console.WriteLine(example.Contains("hello")); //False cause case sensitive
+           /*this trows an error, cause reassigning is not allowed
+           string example = " This is second string";
+           Console.WriteLine(example.ToUpper()); */
+           string example_1 = "Hello world" + " This is second string"; //using '+' to append strings
+            Console.WriteLine(example_1.ToUpper()); //
+           Console.WriteLine(example_1.ToLower());
+           Console.WriteLine(example_1.Contains("is"));
+           
+        }
+    }
+}
