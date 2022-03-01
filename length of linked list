@@ -1,0 +1,47 @@
+//length of the linked list
+
+#include<stdio.h>
+#include<stdlib.h>
+struct Node 
+{
+    int data;
+    struct Node *next;
+};
+
+void insert(struct Node **head_ref , int newdata)
+{
+    struct Node *New = (struct Node*)malloc(sizeof(struct Node));
+    New->data = newdata;
+    New->next = (*head_ref);
+    (*head_ref) = New;
+}
+void print(struct Node *head_ref)
+{
+    struct Node *temp = head_ref;
+    while(temp != NULL)
+    {
+        printf("%d ->",temp->data);
+        temp = temp->next;
+    }
+}
+void length(struct Node *head_ref)
+{
+    int count =0;
+    struct Node *temp = head_ref;
+    while(temp != NULL)
+    {
+        temp=temp->next;
+        count++;
+    }
+    printf("\nThe length is : %d",count);
+}
+int main()
+{
+    struct Node *head = NULL;
+    insert(&head,5);
+    insert(&head,6);
+    insert(&head,7);
+    print(head);
+    length(head);
+    
+}
