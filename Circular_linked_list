@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+void print(struct Node *head_ref)
+{
+    struct Node *temp = head_ref;
+    if(head_ref !=  NULL)      //the list shouldn't be empty
+    {
+        do{
+            printf("%d",temp->data);  //printing the data
+            temp = temp->next;
+        }while(temp!=head_ref);
+    }
+}
+void insert(struct Node **head_ref , int newdata)
+{
+    struct Node *ptr = (struct Node*)malloc(sizeof(struct Node));  //creating a node
+    struct Node *temp = *head_ref;  //creating a pointer and storing the head vlue in it
+    ptr->data = newdata;
+    ptr->next = *head_ref; //newly created ptr points to head reference
+    if(*head_ref!=NULL)
+    {
+    while(temp->next!= *head_ref)   //traversing till the last i.e,. until it reaches the head, 
+       temp = temp->next;
+       temp->next = ptr;  //finally assigning the value of temp->next to newly created pointer.
+       
+    }
+    else
+    ptr->next = ptr;
+
+   ( *head_ref) = ptr; //making new pointer as head
+}
+int main()
+{
+    struct Node *head = NULL;
+    insert(&head,5);
+    insert(&head,6);
+    insert(&head,7);
+    print(head);
+}
+    
