@@ -1,0 +1,49 @@
+//stacks using linked lists
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+struct Node *top = NULL;
+
+void push(int newdata)
+{
+    struct Node *newnode = (struct Node*)malloc(sizeof(struct Node));
+    newnode->data = newdata;
+    newnode->next = top;
+    top = newnode;
+}
+
+void pop()
+{
+    struct Node *temp = top;
+    if(top == NULL)
+    printf("stack is empty");
+    else
+    printf("%d",temp->data);
+    temp=temp->next;
+    
+}
+void display()
+{
+    struct Node *temp = top;
+    while(temp!=NULL)
+    {
+    printf("%d",temp->data);
+    temp=temp->next;
+    }
+}
+
+int main()
+{
+    struct Node *stack;
+    push(9);
+    push(8);
+    push(7);
+    push(6);
+    pop();
+    display();
+}
