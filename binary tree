@@ -1,0 +1,72 @@
+//Binary search Tree
+#include<stdio.h>
+#include<stdlib.h>
+struct Tree
+{
+    int data;
+    struct Tree *left ;
+    struct Tree *right ;
+};
+
+struct Tree*  create(int newdata)
+{
+struct Tree* New_tree = (struct Tree*)malloc(sizeof(struct Tree));
+New_tree->data=newdata;
+New_tree->left = NULL;
+New_tree->right = NULL;
+return(New_tree);
+}
+
+
+void printinorder(struct Tree* node)
+{
+    if(node == NULL)
+    return;
+    printinorder(node->left);
+    printf("%d ",node->data);
+     printinorder(node->right);
+    
+    
+}
+
+void printpreorder(struct Tree* node)
+{
+     if(node == NULL)
+    return;
+    printf("%d ",node->data);
+    printpreorder(node->left);
+    printpreorder(node->right);
+}
+
+void printpostorder(struct Tree* node)
+{
+     if(node == NULL)
+    return;
+   
+    printpostorder(node->left);
+    printpostorder(node->right);
+     printf("%d ",node->data);
+}
+
+int main()
+{
+    struct Tree *node = create(1);
+    node->left = create(2);
+    node->right = create(3);
+    node->right->right = create(4);
+    node->right->left = create(5);
+    printpostorder(node);
+    printf("\n");
+    printpreorder(node);
+     printf("\n");
+    printinorder(node);
+     printf("\n");
+    return 0;
+
+}
+
+    
+
+    
+
+
