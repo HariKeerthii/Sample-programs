@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *Nextpointer;
+};
+
+void hasloop(struct Node **head)
+{
+    struct Node *first;
+    struct Node *second;   //create two pointers ;; both pointing to head
+    first = (*head);
+    second = (*head);
+    
+   while(first!=NULL & first->next != NULL) //while it does not reach the end of linked list 
+   {
+        second = head ->next;   //second jumps one step while first jumps two steps forward
+        first = head->next->next;
+        
+        if(second == first)   //if it has loop,,first and second both meets at a point and hence can say it has loop
+        {
+            printf("It has loop");
+        }
+        
+    }
+    printf("It doesnot have loop");
+}
