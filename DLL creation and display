@@ -1,0 +1,56 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *prev;
+    struct node *next;
+};
+
+struct node *head;  //instead of passing in every function made head pointer as global
+void create(int newdata)
+{
+    struct node *newnode = (struct node*)malloc(sizeof(struct node));
+    newnode->prev=NULL;  //while inserting at the beginning, the newnode becomes head node thus, making the previous link as NULL
+    newnode->next=head;
+    head->prev=newnode;
+    newnode->data =newdata;
+   
+    head = newnode;
+}
+
+void insert_at_end(int newdata)
+{
+    struct node *newnode = (struct node*)malloc(sizeof(struct node));
+    struct node* temp = head;  //creating one more reference pointer ehich has head value and traversing till the end,
+    
+    while(temp->next!=NULL)
+    {
+        temp = temp->next;
+    }
+    newnode->data = newdata;
+    newnode->next = NULL; //here since the last node becomes newly created node, the next value becomes NULL
+    newnode->prev = temp;
+    temp->next = newnode;
+}
+void display()
+{
+    struct node *temp = head;
+    while(temp != NULL)
+    {
+        printf("%d",temp->data);
+        temp=temp->next;
+    }
+    
+}
+
+int main()
+{
+    create(6);
+    create(7);
+    create(8);
+    display();
+    
+}
