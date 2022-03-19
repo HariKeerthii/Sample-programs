@@ -1,0 +1,49 @@
+/* Algorithm for shuffling
+->split 13 cards into one set
+->repeat this step so that you will get 4 sets
+->take a duplicate array of 52 spaces and fill first number from fist split in 1st space and 1st num from second split in secod space and so on..
+->finally we will get shiffled array
+->output for this will be
+--.firsst split ={1,2,3,4,5,6,7,8,9,10,11,12,13};
+-->second split ={14,15,16,17,18,19,20,21,22,23,24,25,26}
+-->third split={27,28,29,30,31,32,33,34,35,36,37,38,39}
+-->fourth split={40,41,42,43,44,45,46,47,48,49,50,51,52}
+shuffled array = {1,14,27,40,2,15,28,41,3,16,29,42......}*/
+
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int arr[52] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52};
+    int arr_shuffle[51];
+    int split1[12],split2[12],split3[12],split4[12];
+    int i;
+    for(int i=0;i<=12;i++)
+    {
+        split1[i] = arr[i];
+    }
+    for(int i=13;i<=25;i++)
+    {
+        split2[i] = arr[i];
+    }
+    for(int i=26;i<=38;i++)
+    {
+    split3[i] = arr[i];
+    }
+    for(int i=39;i<=51;i++)
+    {
+    split1[i] = arr[i];
+    }
+    
+    for(i=0;i<=12;i+4)
+    {
+        arr_shuffle[i]=split1[i];
+        arr_shuffle[i+1]=split2[i];
+        arr_shuffle[i+2]=split3[i];
+        arr_shuffle[i+3]=split4[i];
+    }
+    
+    for(i=0;i<=51;i++)
+    printf("%d ",arr_shuffle[i]);
+}
