@@ -1,0 +1,52 @@
+
+
+#include <stdio.h>
+#include <stdlib.h>
+//creating a node
+struct node
+{
+    char data; // we are creating a node with characters as data
+    struct node *next;
+
+};
+
+//Print function to print the nodes
+void printfun(struct node *n)
+{
+    while(n!=NULL)
+    {
+        printf("%c\t",n->data);
+        n=n->next;
+       // printf("%d",n->data);
+        
+    }
+}
+
+//Function to insert a node at front of the linked list
+void push(struct node **ptr,char new_data) //Function takes pointer to pointer of type struct node and data of type char
+{
+    struct node *new_node = (struct node *)malloc(sizeof(struct node)); //dynamic memory allocation
+    new_node->data = new_data; 
+    new_node->next = (*ptr); //pointing new node's pointer to the head of the linked list.Thus the new node becomes the head and the head becomes lastnode pointin NULL
+    (*ptr) = new_node;
+    
+}
+
+int main()
+{
+
+struct node *head = NULL;
+
+push(&head,'a');
+push(&head,'\0');
+push(&head,'c');
+push(&head,'\0');
+push(&head,'\0');
+push(&head,'c');
+
+printfun(head);
+  return 0;
+
+}
+
+//output should be        " a  c    c "
